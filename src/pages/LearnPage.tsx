@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BookOpen, CheckCircle, PlayCircle, ExternalLink, Download, Users, Award } from 'lucide-react';
-import { LearningModule } from '../components/learning/LearningModule';
 
 export const LearnPage: React.FC = () => {
-  const [completedModules, setCompletedModules] = useState<string[]>(['1']);
-  const [activeModule, setActiveModule] = useState<string | null>(null);
+  const [completedModules, setCompletedModules] = useState<string[]>([]);
 
   const modules = [
     {
@@ -14,7 +13,8 @@ export const LearnPage: React.FC = () => {
       duration: '15 min',
       difficulty: 'Beginner',
       topics: ['What is FOI?', 'Your rights as a citizen', 'Types of information you can request'],
-      completed: completedModules.includes('1')
+      completed: completedModules.includes('1'),
+      link: '/learn/foi-introduction'
     },
     {
       id: '2',
@@ -23,7 +23,8 @@ export const LearnPage: React.FC = () => {
       duration: '25 min',
       difficulty: 'Beginner',
       topics: ['Request structure', 'Being specific', 'Common pitfalls to avoid'],
-      completed: completedModules.includes('2')
+      completed: completedModules.includes('2'),
+      comingSoon: true
     },
     {
       id: '3',
@@ -32,7 +33,8 @@ export const LearnPage: React.FC = () => {
       duration: '20 min',
       difficulty: 'Intermediate',
       topics: ['Response deadlines', 'Appeal processes', 'Your rights when denied'],
-      completed: completedModules.includes('3')
+      completed: completedModules.includes('3'),
+      comingSoon: true
     },
     {
       id: '4',
@@ -41,7 +43,8 @@ export const LearnPage: React.FC = () => {
       duration: '30 min',
       difficulty: 'Intermediate',
       topics: ['Data analysis basics', 'Finding the story', 'Fact-checking techniques'],
-      completed: completedModules.includes('4')
+      completed: completedModules.includes('4'),
+      comingSoon: true
     },
     {
       id: '5',
@@ -50,7 +53,8 @@ export const LearnPage: React.FC = () => {
       duration: '45 min',
       difficulty: 'Advanced',
       topics: ['Cross-referencing sources', 'Building timelines', 'Interview techniques'],
-      completed: completedModules.includes('5')
+      completed: completedModules.includes('5'),
+      comingSoon: true
     }
   ];
 
@@ -82,26 +86,6 @@ export const LearnPage: React.FC = () => {
     { name: 'FOI Expert', description: 'Complete all modules', earned: completedModules.length >= 5 },
     { name: 'Story Teller', description: 'Publish your first story', earned: false }
   ];
-
-  const handleModuleClick = (moduleId: string) => {
-    if (moduleId === '1') {
-      setActiveModule(moduleId);
-    } else {
-      // For other modules, show a placeholder message
-      alert('This module is coming soon! Complete the first module to unlock more content.');
-    }
-  };
-
-  const handleModuleComplete = (moduleId: string) => {
-    if (!completedModules.includes(moduleId)) {
-      setCompletedModules([...completedModules, moduleId]);
-    }
-    setActiveModule(null);
-  };
-
-  const handleCloseModule = () => {
-    setActiveModule(null);
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -163,6 +147,11 @@ export const LearnPage: React.FC = () => {
                       {module.completed && (
                         <CheckCircle className="w-6 h-6 text-green-500" />
                       )}
+                      {module.comingSoon && (
+                        <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
+                          Coming Soon
+                        </span>
+                      )}
                     </div>
                     <p className="text-gray-600 mb-3">{module.description}</p>
                     <div className="flex items-center space-x-4 text-sm text-gray-500">
@@ -176,26 +165,43 @@ export const LearnPage: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <button 
-                    onClick={() => handleModuleClick(module.id)}
-                    className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
-                      module.completed 
-                        ? 'bg-green-100 text-green-700 hover:bg-green-200'
-                        : 'bg-blue-600 text-white hover:bg-blue-700'
-                    }`}
-                  >
-                    {module.completed ? (
-                      <>
-                        <CheckCircle className="w-5 h-5" />
-                        <span>Review</span>
-                      </>
-                    ) : (
-                      <>
-                        <PlayCircle className="w-5 h-5" />
-                        <span>Start</span>
-                      </>
-                    )}
-                  </button>
+                  
+                  {module.comingSoon ? (
+                    <button 
+                      disabled
+                      className="flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold bg-gray-100 text-gray-400 cursor-not-allowed"
+                    >
+                      <span>Coming Soon</span>
+                    </button>
+                  ) : module.link ? (
+                    <Link
+                      to={module.link}
+                      className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
+                        module.completed 
+                          ? 'bg-green-100 text-green-700 hover:bg-green-200'
+                          : 'bg-blue-600 text-white hover:bg-blue-700'
+                      }`}
+                    >
+                      {module.completed ? (
+                        <>
+                          <CheckCircle className="w-5 h-5" />
+                          <span>Review</span>
+                        </>
+                      ) : (
+                        <>
+                          <PlayCircle className="w-5 h-5" />
+                          <span>Start</span>
+                        </>
+                      )}
+                    </Link>
+                  ) : (
+                    <button 
+                      disabled
+                      className="flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold bg-gray-100 text-gray-400 cursor-not-allowed"
+                    >
+                      <span>Coming Soon</span>
+                    </button>
+                  )}
                 </div>
                 
                 <div className="border-t pt-4">
@@ -270,24 +276,15 @@ export const LearnPage: React.FC = () => {
             <p className="text-green-100 mb-4">
               Begin with our introductory module and work your way up to advanced investigation techniques.
             </p>
-            <button 
-              onClick={() => handleModuleClick('1')}
-              className="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            <Link
+              to="/learn/foi-introduction"
+              className="block w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors text-center"
             >
               Start Learning Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>
-
-      {/* Learning Module Modal */}
-      {activeModule && (
-        <LearningModule
-          moduleId={activeModule}
-          onClose={handleCloseModule}
-          onComplete={handleModuleComplete}
-        />
-      )}
     </div>
   );
 };
