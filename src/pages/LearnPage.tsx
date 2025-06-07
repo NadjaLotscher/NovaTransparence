@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { BookOpen, CheckCircle, PlayCircle, ExternalLink, Download, Users, Award } from 'lucide-react';
+import { LearningModule } from '../components/learning/LearningModule';
 
 export const LearnPage: React.FC = () => {
   const [completedModules, setCompletedModules] = useState<string[]>(['1']);
+  const [activeModule, setActiveModule] = useState<string | null>(null);
 
   const modules = [
     {
@@ -12,7 +14,7 @@ export const LearnPage: React.FC = () => {
       duration: '15 min',
       difficulty: 'Beginner',
       topics: ['What is FOI?', 'Your rights as a citizen', 'Types of information you can request'],
-      completed: true
+      completed: completedModules.includes('1')
     },
     {
       id: '2',
@@ -21,7 +23,7 @@ export const LearnPage: React.FC = () => {
       duration: '25 min',
       difficulty: 'Beginner',
       topics: ['Request structure', 'Being specific', 'Common pitfalls to avoid'],
-      completed: false
+      completed: completedModules.includes('2')
     },
     {
       id: '3',
@@ -30,7 +32,7 @@ export const LearnPage: React.FC = () => {
       duration: '20 min',
       difficulty: 'Intermediate',
       topics: ['Response deadlines', 'Appeal processes', 'Your rights when denied'],
-      completed: false
+      completed: completedModules.includes('3')
     },
     {
       id: '4',
@@ -39,7 +41,7 @@ export const LearnPage: React.FC = () => {
       duration: '30 min',
       difficulty: 'Intermediate',
       topics: ['Data analysis basics', 'Finding the story', 'Fact-checking techniques'],
-      completed: false
+      completed: completedModules.includes('4')
     },
     {
       id: '5',
@@ -48,7 +50,7 @@ export const LearnPage: React.FC = () => {
       duration: '45 min',
       difficulty: 'Advanced',
       topics: ['Cross-referencing sources', 'Building timelines', 'Interview techniques'],
-      completed: false
+      completed: completedModules.includes('5')
     }
   ];
 
@@ -75,11 +77,31 @@ export const LearnPage: React.FC = () => {
   ];
 
   const achievements = [
-    { name: 'First Steps', description: 'Complete your first module', earned: true },
-    { name: 'Knowledge Seeker', description: 'Complete 3 modules', earned: false },
-    { name: 'FOI Expert', description: 'Complete all modules', earned: false },
+    { name: 'First Steps', description: 'Complete your first module', earned: completedModules.length > 0 },
+    { name: 'Knowledge Seeker', description: 'Complete 3 modules', earned: completedModules.length >= 3 },
+    { name: 'FOI Expert', description: 'Complete all modules', earned: completedModules.length >= 5 },
     { name: 'Story Teller', description: 'Publish your first story', earned: false }
   ];
+
+  const handleModuleClick = (moduleId: string) => {
+    if (moduleId === '1') {
+      setActiveModule(moduleId);
+    } else {
+      // For other modules, show a placeholder message
+      alert('This module is coming soon! Complete the first module to unlock more content.');
+    }
+  };
+
+  const handleModuleComplete = (moduleId: string) => {
+    if (!completedModules.includes(moduleId)) {
+      setCompletedModules([...completedModules, moduleId]);
+    }
+    setActiveModule(null);
+  };
+
+  const handleCloseModule = () => {
+    setActiveModule(null);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -100,11 +122,11 @@ export const LearnPage: React.FC = () => {
             <div className="text-blue-100">Modules Completed</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2">250</div>
+            <div className="text-3xl font-bold mb-2">{completedModules.length * 50}</div>
             <div className="text-blue-100">Points Earned</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2">1</div>
+            <div className="text-3xl font-bold mb-2">{achievements.filter(a => a.earned).length}</div>
             <div className="text-blue-100">Badges Earned</div>
           </div>
         </div>
@@ -154,11 +176,14 @@ export const LearnPage: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <button className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
-                    module.completed 
-                      ? 'bg-green-100 text-green-700 hover:bg-green-200'
-                      : 'bg-blue-600 text-white hover:bg-blue-700'
-                  }`}>
+                  <button 
+                    onClick={() => handleModuleClick(module.id)}
+                    className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
+                      module.completed 
+                        ? 'bg-green-100 text-green-700 hover:bg-green-200'
+                        : 'bg-blue-600 text-white hover:bg-blue-700'
+                    }`}
+                  >
                     {module.completed ? (
                       <>
                         <CheckCircle className="w-5 h-5" />
@@ -245,12 +270,24 @@ export const LearnPage: React.FC = () => {
             <p className="text-green-100 mb-4">
               Begin with our introductory module and work your way up to advanced investigation techniques.
             </p>
-            <button className="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            <button 
+              onClick={() => handleModuleClick('1')}
+              className="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            >
               Start Learning Now
             </button>
           </div>
         </div>
       </div>
+
+      {/* Learning Module Modal */}
+      {activeModule && (
+        <LearningModule
+          moduleId={activeModule}
+          onClose={handleCloseModule}
+          onComplete={handleModuleComplete}
+        />
+      )}
     </div>
   );
 };
