@@ -19,24 +19,25 @@ export const mockStories: Story[] = [
     featured: true,
     tags: ['lucerne', 'transparency', 'public-law']
   },
-  {
+ {
+  id: '2',
+  title: 'Transparence à Crans-Montana : Des rapports sur les remontées mécaniques enfin publics',
+  content: "Suite à une intervention décisive du préposé valaisan à la transparence, six médias, dont la RTS, ont finalement obtenu l'accès à des rapports confidentiels concernant la société de remontées mécaniques de Crans-Montana-Aminona (CMA). Ces documents, très attendus, se penchent sur des soupçons d’infractions pénales liées à une transaction de recapitalisation qui a permis à l'investisseur tchèque Radovan Vitek de renforcer son contrôle sur la station.\n\nLes analyses juridiques et fiduciaires, s'étalant sur plus de 130 pages, mettent en lumière des faits troublants. L'un des rapports chiffre la perte subie par les communes à plus de 2,6 millions de francs. Cette perte découlerait de la vente de la société CMA Immobilier à CMA par Radovan Vitek, à un prix qui excéderait sa valeur réelle de 25 millions de francs. Les experts soulignent également que cette opération a 'drastiquement' réduit l'influence et le pouvoir décisionnel des communes, tandis que d'autres évoquent une possible violation du Code des obligations et des devoirs de diligence, qualifiant l'affaire de 'hold-up presque parfait'.\n\nMalgré la gravité des conclusions, qui ouvraient la porte à une plainte pénale pour gestion déloyale ou escroquerie, les communes ont renoncé à agir en justice. Elles craignaient de perdre le soutien de Radovan Vitek, 'poumon économique du Haut-Plateau', et de s'engager dans une longue bataille judiciaire. De son côté, le président de CMA a vivement rejeté les accusations, qualifiant les rapports d''inexacts' et 'sans valeur probante'. L'affaire a néanmoins pris une tournure judiciaire, le procureur général du canton s'étant auto-saisi du dossier pour lancer une enquête pénale préliminaire.",
+  category: 'Politique',
+  informationSource: 'RTS, 7 juin 2025',
+  author: {
     id: '2',
-    title: 'Lobbying Campaign Exposed Through Leaked Emails',
-    content: 'Journalist Anina Ritscher used freed emails to expose how the Swiss shipping giant MSC influences politics in Bern. Her research revealed lobbying strategies by the company, despite Switzerland being a landlocked country.',
-    category: 'Business',
-    informationSource: 'Öffentlichkeitsgesetz.ch, May 26, 2025',
-    author: {
-      id: '2',
-      name: 'Anina Ritscher',
-      avatar: 'https://images.pexels.com/photos/3771511/pexels-photo-3771511.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      badges: ['Transparency Award Winner']
-    },
-    likes: 58,
-    comments: [],
-    createdAt: '2025-05-26T10:18:00Z',
-    tags: ['lobbying', 'MSC', 'email-investigation']
+    name: 'Pauline Turuban',
+    avatar: 'https://images.pexels.com/photos/3772623/pexels-photo-3772623.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
+    badges: ['Journaliste']
   },
-  {
+  likes: 70,
+  comments: [],
+  createdAt: '2025-06-07T09:30:00Z',
+  featured: true,
+  tags: ['crans-montana', 'transparence', 'justice', 'valais']
+},
+    {
     id: '3',
     title: 'Special Regulations Rarely Override Transparency Law',
     content: 'Court rulings confirm that special regulations from other federal laws cannot be used as a blanket excuse to deny access to information. This strengthens the transparency principle at the federal level.',
