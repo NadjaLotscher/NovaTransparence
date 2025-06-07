@@ -7,9 +7,6 @@ export const CreateStoryPage: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  // State for investigation points (like clues collected)
-  const [investigationPoints, setInvestigationPoints] = useState(0);
-
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -35,21 +32,10 @@ export const CreateStoryPage: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Simulate gathering clues for the game
-  const gatherClues = () => {
-    const newPoints = Math.floor(Math.random() * 3) + 1; // 1 to 3 points
-    setInvestigationPoints(prev => prev + newPoints);
-    alert(`You collected ${newPoints} investigation points! Total: ${investigationPoints + newPoints}`);
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title.trim() || !formData.content.trim()) {
       alert('Please provide a title and write your article!');
-      return;
-    }
-    if (investigationPoints < 5) {
-      alert('To publish your article, you need at least 5 investigation points. Keep gathering info!');
       return;
     }
 
@@ -201,18 +187,6 @@ export const CreateStoryPage: React.FC = () => {
                 />
                 <p className="text-sm text-gray-500 mt-1">What evidence have you gathered?</p>
               </div>
-            </div>
-
-            {/* Button to gather investigation points */}
-            <div className="mb-4">
-              <button
-                type="button"
-                onClick={gatherClues}
-                className="inline-flex items-center px-6 py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors"
-              >
-                Gather clues
-              </button>
-              <p className="mt-2 text-sm text-gray-600">Investigation points collected: {investigationPoints}</p>
             </div>
 
             {/* Content */}
