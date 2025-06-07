@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Heart, MessageCircle, Calendar, User, Tag, ArrowLeft, Flag, Share2 } from 'lucide-react';
-import { mockStories } from '../data/mockData';
-import { useAuth } from '../contexts/AuthContext';
+import React, { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import {
+  Heart,
+  MessageCircle,
+  Calendar,
+  Tag,
+  ArrowLeft,
+  Flag,
+  Share2,
+} from "lucide-react";
+import { mockStories } from "../data/mockData";
+import { useAuth } from "../contexts/AuthContext";
 
 export const StoryDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { user } = useAuth();
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
 
-  const story = mockStories.find(s => s.id === id);
+  const story = mockStories.find((s) => s.id === id);
 
   if (!story) {
     return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Story not found</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            Story not found
+          </h1>
           <Link to="/stories" className="text-blue-600 hover:text-blue-700">
             ← Back to Stories
           </Link>
@@ -28,10 +38,10 @@ export const StoryDetailPage: React.FC = () => {
   const handleSubmitComment = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newComment.trim()) return;
-    
+
     // Here you would normally submit to an API
-    console.log('New comment:', newComment);
-    setNewComment('');
+    console.log("New comment:", newComment);
+    setNewComment("");
   };
 
   const handleLike = () => {
@@ -66,10 +76,10 @@ export const StoryDetailPage: React.FC = () => {
               )}
               <div className="flex items-center text-gray-500">
                 <Calendar className="w-4 h-4 mr-2" />
-                {new Date(story.createdAt).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
+                {new Date(story.createdAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </div>
             </div>
@@ -111,19 +121,44 @@ export const StoryDetailPage: React.FC = () => {
           {/* Information Source */}
           {story.informationSource && (
             <div className="bg-green-50 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
-              <h3 className="font-semibold text-green-800 mb-2">Information Source</h3>
+              <h3 className="font-semibold text-green-800 mb-2">
+                Information Source
+              </h3>
               <p className="text-green-700">{story.informationSource}</p>
             </div>
           )}
 
           {/* Content */}
           <div className="prose prose-lg max-w-none mb-8">
-            {story.content.split('\n').map((paragraph, index) => (
+            {story.content.split("\n").map((paragraph, index) => (
               <p key={index} className="mb-4 text-gray-700 leading-relaxed">
                 {paragraph}
               </p>
             ))}
           </div>
+
+          {/* Related documents */}
+          {story.relatedDocuments && story.relatedDocuments.length > 0 && (
+            <div className="bg-gray-50 p-6 rounded-lg mb-8">
+              <h3 className="font-semibold text-gray-800 mb-4">
+                Related Documents
+              </h3>
+              <ul className="list-disc pl-5 space-y-2">
+                {story.relatedDocuments.map((doc, index) => (
+                  <li key={index} className="text-gray-700">
+                    <a
+                      href={doc.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {doc.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Engagement Actions */}
           <div className="flex items-center justify-between pt-8 border-t">
@@ -132,11 +167,11 @@ export const StoryDetailPage: React.FC = () => {
                 onClick={handleLike}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
                   isLiked
-                    ? 'bg-red-100 text-red-600'
-                    : 'text-gray-500 hover:text-red-500 hover:bg-red-50'
+                    ? "bg-red-100 text-red-600"
+                    : "text-gray-500 hover:text-red-500 hover:bg-red-50"
                 }`}
               >
-                <Heart className={`w-5 h-5 ${isLiked ? 'fill-current' : ''}`} />
+                <Heart className={`w-5 h-5 ${isLiked ? "fill-current" : ""}`} />
                 <span>{story.likes + (isLiked ? 1 : 0)}</span>
               </button>
               <div className="flex items-center space-x-2 text-gray-500">
@@ -158,7 +193,10 @@ export const StoryDetailPage: React.FC = () => {
 
         {/* Add Comment Form */}
         {user && (
-          <form onSubmit={handleSubmitComment} className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <form
+            onSubmit={handleSubmitComment}
+            className="bg-white rounded-lg shadow-md p-6 mb-8"
+          >
             <div className="flex space-x-4">
               <img
                 src={user.avatar}
@@ -191,7 +229,10 @@ export const StoryDetailPage: React.FC = () => {
         <div className="space-y-6">
           {story.comments && story.comments.length > 0 ? (
             story.comments.map((comment) => (
-              <div key={comment.id} className="bg-white rounded-lg shadow-md p-6">
+              <div
+                key={comment.id}
+                className="bg-white rounded-lg shadow-md p-6"
+              >
                 <div className="flex space-x-4">
                   <img
                     src={comment.author.avatar}
@@ -200,7 +241,9 @@ export const StoryDetailPage: React.FC = () => {
                   />
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-2">
-                      <h4 className="font-semibold text-gray-900">{comment.author.name}</h4>
+                      <h4 className="font-semibold text-gray-900">
+                        {comment.author.name}
+                      </h4>
                       <span className="text-gray-500 text-sm">
                         {new Date(comment.createdAt).toLocaleDateString()}
                       </span>
@@ -213,7 +256,9 @@ export const StoryDetailPage: React.FC = () => {
           ) : (
             <div className="text-center py-8">
               <MessageCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600">No comments yet. Be the first to share your thoughts!</p>
+              <p className="text-gray-600">
+                No comments yet. Be the first to share your thoughts!
+              </p>
             </div>
           )}
         </div>
