@@ -10,6 +10,7 @@ import { CreateStoryPage } from './pages/CreateStoryPage';
 import { ContestPage } from './pages/ContestPage';
 import { ContestSubmissionPage } from './pages/ContestSubmissionPage';
 import { LearnPage } from './pages/LearnPage';
+import { FOILearningPage } from './pages/FOILearningPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { RankingsPage } from './pages/RankingsPage';
 import { RequestGeneratorPage } from './pages/RequestGeneratorPage';
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/contest" element={<ContestPage />} />
                 <Route path="/contest/submit" element={<ContestSubmissionPage />} />
                 <Route path="/learn" element={<LearnPage />} />
+                <Route path="/learn/foi-introduction" element={<FOILearningPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/rankings" element={<RankingsPage />} />
                 <Route path="/request-generator" element={<RequestGeneratorPage />} />
