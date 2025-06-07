@@ -27,4 +27,11 @@ export interface Story {
   isLikedByUser?: boolean;
   featured?: boolean;
   tags?: string[];
+  relatedDocuments?: doc[];
+}
+
+export interface doc {
+  id: string;
+  title: string;
+  url: string;
 }
