@@ -26,7 +26,7 @@ export const mockStories: Story[] = [
     title:
       "Transparence à Crans-Montana : Des rapports sur les remontées mécaniques enfin publics",
     content:
-      "Suite à une intervention décisive du préposé valaisan à la transparence, six médias, dont la RTS, ont finalement obtenu l'accès à des rapports confidentiels concernant la société de remontées mécaniques de Crans-Montana-Aminona (CMA). Ces documents, très attendus, se penchent sur des soupçons d’infractions pénales liées à une transaction de recapitalisation qui a permis à l'investisseur tchèque Radovan Vitek de renforcer son contrôle sur la station.\n\nLes analyses juridiques et fiduciaires, s'étalant sur plus de 130 pages, mettent en lumière des faits troublants. L'un des rapports chiffre la perte subie par les communes à plus de 2,6 millions de francs. Cette perte découlerait de la vente de la société CMA Immobilier à CMA par Radovan Vitek, à un prix qui excéderait sa valeur réelle de 25 millions de francs. Les experts soulignent également que cette opération a 'drastiquement' réduit l'influence et le pouvoir décisionnel des communes, tandis que d'autres évoquent une possible violation du Code des obligations et des devoirs de diligence, qualifiant l'affaire de 'hold-up presque parfait'.\n\nMalgré la gravité des conclusions, qui ouvraient la porte à une plainte pénale pour gestion déloyale ou escroquerie, les communes ont renoncé à agir en justice. Elles craignaient de perdre le soutien de Radovan Vitek, 'poumon économique du Haut-Plateau', et de s'engager dans une longue bataille judiciaire. De son côté, le président de CMA a vivement rejeté les accusations, qualifiant les rapports d''inexacts' et 'sans valeur probante'. L'affaire a néanmoins pris une tournure judiciaire, le procureur général du canton s'étant auto-saisi du dossier pour lancer une enquête pénale préliminaire.",
+      "Suite à une intervention décisive du préposé valaisan à la transparence, six médias, dont la RTS, ont finalement obtenu l'accès à des rapports confidentiels concernant la société de remontées mécaniques de Crans-Montana-Aminona (CMA). Les documents révèlent des pertes de plusieurs millions pour les communes, ainsi que des soupçons de gestion déloyale et d’escroquerie. Malgré ces éléments, les communes n’ont pas porté plainte, redoutant un conflit avec l’investisseur principal Radovan Vitek.",
     category: "Politique",
     informationSource: "RTS, 7 juin 2025",
     author: {
@@ -89,21 +89,22 @@ export const mockStories: Story[] = [
   },
   {
     id: "5",
-    title: "Transparency Pioneer Honored with Journalism Award",
+    title:
+      "Electronic Bracelet Usage in Romandy Shows Striking Canton Disparities",
     content:
-      "Martin Stoll, founder of Öffentlichkeitsgesetz.ch, was awarded the Zurich Journalism Prize for his lifelong efforts toward transparency and investigative reporting. His work has had a lasting impact on Swiss journalism.",
-    category: "Media",
-    informationSource: "Zurich Journalism Prize, May 2025",
+      "Thanks to transparency laws, RTS uncovered large differences in how cantons use electronic monitoring instead of prison for short sentences. Vaud leads with high adoption, while Neuchâtel uses the measure far less. Access to this alternative often depends more on location than on law.",
+    category: "Info",
+    informationSource: "RTS, February 24, 2025",
     author: {
       id: "5",
-      name: "Award Jury",
+      name: "Jacqueline Pirszel & Tybalt Félix",
       avatar:
         "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2",
-      badges: ["Award Committee"],
+      badges: ["Data Journalist"],
     },
-    likes: 66,
+    likes: 77,
     comments: [],
-    createdAt: "2025-05-14T10:47:00Z",
-    tags: ["journalism", "award", "martin-stoll"],
+    createdAt: "2025-02-24T09:32:00Z",
+    tags: ["justice", "monitoring", "cantons", "rts"],
   },
 ];
