@@ -3,100 +3,88 @@ import { Story } from '../types/Story';
 export const mockStories: Story[] = [
   {
     id: '1',
-    title: 'Hidden Budget Allocations Revealed in Municipal Spending',
-    content: 'After filing a freedom of information request with our local municipality, I uncovered significant discrepancies in budget allocations for youth programs. The documents revealed that while $2.3 million was allocated for youth services, only 40% was actually spent on programs directly benefiting young people in our community.',
-    category: 'Government',
-    informationSource: 'Municipal budget documents obtained through FOI request #2024-156',
+    title: 'Lucerne Introduces Transparency Law – With Weaknesses',
+    content: 'After years of debate, Lucerne has introduced a transparency law that makes official information generally accessible. However, critics point out weaknesses: authorities may still reject requests if they can justify it based on legal grounds – which may remain a barrier in practice.',
+    category: 'Politics',
+    informationSource: 'Öffentlichkeitsgesetz.ch, May 29, 2025',
     author: {
       id: '1',
-      name: 'Alex Chen',
+      name: 'Martin Stoll',
       avatar: 'https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      badges: ['FOI Expert', 'First Story']
+      badges: ['Investigative Journalist']
     },
-    likes: 89,
-    comments: [
-      {
-        id: '1',
-        author: {
-          id: '2',
-          name: 'Maria Rodriguez',
-          avatar: 'https://images.pexels.com/photos/3771511/pexels-photo-3771511.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2'
-        },
-        content: 'This is incredible investigative work! Have you considered sharing this with local news outlets?',
-        createdAt: '2024-01-20T10:30:00Z'
-      }
-    ],
-    createdAt: '2024-01-18T14:22:00Z',
+    likes: 34,
+    comments: [],
+    createdAt: '2025-05-29T16:29:00Z',
     featured: true,
-    tags: ['government', 'budget', 'youth-services']
+    tags: ['lucerne', 'transparency', 'public-law']
   },
   {
     id: '2',
-    title: 'School Lunch Program: Where Does the Money Really Go?',
-    content: 'Through careful analysis of public records, I discovered that our school district spends significantly more per meal than neighboring districts, yet students report lower satisfaction. The investigation revealed administrative overhead consuming 35% of the lunch program budget.',
-    category: 'Education',
-    informationSource: 'School district financial records and comparative analysis',
+    title: 'Lobbying Campaign Exposed Through Leaked Emails',
+    content: 'Journalist Anina Ritscher used freed emails to expose how the Swiss shipping giant MSC influences politics in Bern. Her research revealed lobbying strategies by the company, despite Switzerland being a landlocked country.',
+    category: 'Business',
+    informationSource: 'Öffentlichkeitsgesetz.ch, May 26, 2025',
     author: {
       id: '2',
-      name: 'Jordan Williams',
+      name: 'Anina Ritscher',
       avatar: 'https://images.pexels.com/photos/3771511/pexels-photo-3771511.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      badges: ['Education Advocate']
+      badges: ['Transparency Award Winner']
     },
-    likes: 67,
+    likes: 58,
     comments: [],
-    createdAt: '2024-01-17T09:45:00Z',
-    tags: ['education', 'school-budget', 'food-services']
+    createdAt: '2025-05-26T10:18:00Z',
+    tags: ['lobbying', 'MSC', 'email-investigation']
   },
   {
     id: '3',
-    title: 'Environmental Impact Reports Missing Key Data',
-    content: 'A deep dive into environmental impact assessments for a proposed development project revealed significant gaps in air quality monitoring data. The missing information could affect the health and safety of our community.',
-    category: 'Environment',
-    informationSource: 'Environmental Protection Agency reports and monitoring data',
+    title: 'Special Regulations Rarely Override Transparency Law',
+    content: 'Court rulings confirm that special regulations from other federal laws cannot be used as a blanket excuse to deny access to information. This strengthens the transparency principle at the federal level.',
+    category: 'Law',
+    informationSource: 'Medialex Annual Report, Eva Hirschi',
     author: {
       id: '3',
-      name: 'Sam Taylor',
+      name: 'Eva Hirschi',
       avatar: 'https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      badges: ['Environmental Watchdog']
+      badges: ['Legal Analyst']
     },
-    likes: 92,
+    likes: 42,
     comments: [],
-    createdAt: '2024-01-16T16:20:00Z',
-    featured: true,
-    tags: ['environment', 'development', 'public-health']
+    createdAt: '2025-04-28T09:41:00Z',
+    tags: ['federal-law', 'legal-precedent', 'transparency']
   },
   {
     id: '4',
-    title: 'Public Transportation Delays: The Data Behind the Problems',
-    content: 'Using public transit data obtained through FOI requests, I analyzed patterns in bus delays and found that 60% of delays occur on routes serving low-income neighborhoods, highlighting potential equity issues in public transportation.',
-    category: 'Transportation',
-    informationSource: 'Public transit authority performance data and scheduling records',
+    title: 'Basel Government Must Introduce Ombudsman',
+    content: 'The Basel parliament passed a motion to create an ombudsman office for transparency disputes. Citizens denied access to documents will no longer need to go directly to court. The move was initially opposed by the government.',
+    category: 'Justice',
+    informationSource: 'Öffentlichkeitsgesetz.ch, April 17, 2025',
     author: {
       id: '4',
-      name: 'Casey Johnson',
+      name: 'Eva Hirschi',
       avatar: 'https://images.pexels.com/photos/3771511/pexels-photo-3771511.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      badges: ['Data Analyst']
+      badges: ['Civic Reporting']
     },
-    likes: 54,
+    likes: 51,
     comments: [],
-    createdAt: '2024-01-15T11:10:00Z',
-    tags: ['transportation', 'equity', 'data-analysis']
+    createdAt: '2025-04-17T09:04:00Z',
+    tags: ['basel', 'ombudsman', 'access-rights']
   },
   {
     id: '5',
-    title: 'Hospital Wait Times: What the Public Data Doesn\'t Show',
-    content: 'An investigation into public hospital performance metrics revealed that reported wait times exclude certain categories of patients, potentially painting an incomplete picture of emergency care accessibility.',
-    category: 'Healthcare',
-    informationSource: 'Hospital performance reports and patient flow data',
+    title: 'Transparency Pioneer Honored with Journalism Award',
+    content: 'Martin Stoll, founder of Öffentlichkeitsgesetz.ch, was awarded the Zurich Journalism Prize for his lifelong efforts toward transparency and investigative reporting. His work has had a lasting impact on Swiss journalism.',
+    category: 'Media',
+    informationSource: 'Zurich Journalism Prize, May 2025',
     author: {
       id: '5',
-      name: 'Morgan Davis',
+      name: 'Award Jury',
       avatar: 'https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      badges: ['Healthcare Advocate']
+      badges: ['Award Committee']
     },
-    likes: 73,
+    likes: 66,
     comments: [],
-    createdAt: '2024-01-14T13:55:00Z',
-    tags: ['healthcare', 'emergency-services', 'patient-care']
+    createdAt: '2025-05-14T10:47:00Z',
+    tags: ['journalism', 'award', 'martin-stoll']
   }
 ];
