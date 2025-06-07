@@ -4,6 +4,7 @@ import { StoryCard } from "../components/stories/StoryCard";
 import { mockStories } from "../data/mockData";
 
 export const ContestPage: React.FC = () => {
+  const { user } = useAuth();
   const contestStories = mockStories.slice(0, 6);
 
   return (
