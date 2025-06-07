@@ -8,6 +8,7 @@ import { StoriesPage } from './pages/StoriesPage';
 import { StoryDetailPage } from './pages/StoryDetailPage';
 import { CreateStoryPage } from './pages/CreateStoryPage';
 import { ContestPage } from './pages/ContestPage';
+import { ContestSubmissionPage } from './pages/ContestSubmissionPage';
 import { LearnPage } from './pages/LearnPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { RankingsPage } from './pages/RankingsPage';
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/stories/:id" element={<StoryDetailPage />} />
                 <Route path="/create-story" element={<CreateStoryPage />} />
                 <Route path="/contest" element={<ContestPage />} />
+                <Route path="/contest/submit" element={<ContestSubmissionPage />} />
                 <Route path="/learn" element={<LearnPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/rankings" element={<RankingsPage />} />

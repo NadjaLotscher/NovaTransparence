@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Trophy, Calendar, Award, Users, Clock, Target } from 'lucide-react';
 import { StoryCard } from '../components/stories/StoryCard';
 import { mockStories } from '../data/mockData';
+import { useAuth } from '../contexts/AuthContext';
 
 export const ContestPage: React.FC = () => {
+  const { user } = useAuth();
   const contestStories = mockStories.slice(0, 6);
 
   return (
@@ -47,9 +50,21 @@ export const ContestPage: React.FC = () => {
             </div>
           </div>
 
-          <button className="bg-yellow-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">
-            Submit Your Story
-          </button>
+          {user ? (
+            <Link
+              to="/contest/submit"
+              className="bg-yellow-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors inline-block"
+            >
+              Submit Your Story
+            </Link>
+          ) : (
+            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              <p className="text-purple-100 mb-3">Sign in to submit your story to the contest</p>
+              <button className="bg-white/20 text-white px-6 py-2 rounded-lg font-semibold hover:bg-white/30 transition-colors">
+                Sign In Required
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
